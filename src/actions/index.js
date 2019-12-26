@@ -1,5 +1,5 @@
-import { takeEvery, all } from 'redux-saga/effects';
-import { INCREMENT } from '../constants';
+import { takeEvery, all, put } from 'redux-saga/effects';
+import { INCREMENT, REQUEST_DATA, GET_DATA } from '../constants';
 
 export const incrementAction = () => {
   console.log('action called');
@@ -28,3 +28,24 @@ export function* rootSaga() {
 
 // 	return {type: INCREMENT};
 // }
+
+const getData = (id) => {
+  return async dispatch => {
+    try {
+      const res = await fetch(`https://api.openweathermap.org/data/2.5/forecast?id=${id}&APPID=6a7f0421f6db587c51706ca707dbac2b`)
+      dispatch(res)
+    } catch (error) {
+      throw error
+    }
+  }
+}
+
+export function* getData(id) {
+  yield put({
+    type: REQUEST_DATA
+  })
+  yield getData(id)
+  yield put({
+    type: GET_DATA
+  })
+}
