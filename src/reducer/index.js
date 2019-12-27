@@ -1,12 +1,10 @@
-import {INCREMENT} from '../constants';
+import { INCREMENT } from '../constants';
 
 const initialState = {
 	count: 0,
 };
 
 const reducer = (state = initialState, action) => {
-	console.log('fire!');
-
 	switch (action.type) {
 		case INCREMENT: {
 			console.log('reducer increment');

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { incrementAction as increment } from './actions';
+import { helloSagas } from './sagas';
 import data from './assets/city.list.json';
 import cyrillicToTranslit from 'cyrillic-to-translit-js';
 
@@ -23,7 +23,7 @@ class App extends Component {
     return (
       <div className="app">
         You clicked {this.props.count} times!
-        <button type="button" onClick={this.props.increment}>
+        <button type="button" onClick={this.props.helloSagas}>
           click
         </button>
         <div>
@@ -40,5 +40,5 @@ export default connect(
   state => ({
     count: state.count,
   }),
-  { increment },
+  { helloSagas },
 )(App);
