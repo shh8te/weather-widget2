@@ -1,9 +1,10 @@
-import { takeEvery, all, put } from 'redux-saga/effects';
-import { REQUEST_DATA, GET_DATA, RECIEVE_DATA, INCREMENT } from '../constants';
-import { helloSagas } from '../sagas'
+import { REQUEST_DATA } from '../constants';
 
-export const increment = () => {
+export const requestData = id => {
   return {
-    type: INCREMENT
-  }
-}
+    type: REQUEST_DATA,
+    payload: {
+      id,
+    },
+  };
+};

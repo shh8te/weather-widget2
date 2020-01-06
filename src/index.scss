@@ -1,0 +1,19 @@
+.app {
+  color: red;
+}
+
+.input {
+  position: relative;
+  height: 22px;
+
+  &__list {
+    width: 200px;
+    max-width: 200px;
+    background-color: #c2c2c2;
+    position: absolute;
+    top: 22px;
+    left: 0;
+    display: none;
+    overflow-x: auto;
+  }
+}

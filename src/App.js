@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { helloSagas } from './sagas';
+import { requestData } from './actions';
 import data from './assets/city.list.json';
 import cyrillicToTranslit from 'cyrillic-to-translit-js';
 
@@ -22,15 +22,20 @@ class App extends Component {
 
     return (
       <div className="app">
-        You clicked {this.props.count} times!
-        <button type="button" onClick={this.props.helloSagas}>
-          click
-        </button>
-        <div>
-          {dataRU.splice(-10, 10).map(item => {
+        <input className="input" value="" />
+        <div className="input__list">
+          {dataRU.slice(-4, -1).map(item => {
             return <div key={item.name}>{item.name}</div>;
           })}
         </div>
+        <button
+          type="button"
+          onClick={() =>
+            this.props.requestData(dataRU.slice(-2, -1)[0].id)
+          }
+        >
+          click
+        </button>
       </div>
     );
   }
@@ -40,5 +45,5 @@ export default connect(
   state => ({
     count: state.count,
   }),
-  { helloSagas },
+  { requestData },
 )(App);
